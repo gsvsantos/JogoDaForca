@@ -7,12 +7,12 @@ Um jogo da forca sobre frutas.
 ## Como Jogar
 - Será escolhido aleatoriamente uma palavra entre várias.
 - Você deverá chutar uma letra por vez.
-- Continue até acertar a palavra sorteada, ou acabar suas tentativas.
+- Continue até acertar a palavra sorteada, ou esgotarem suas tentativas.
 
 ## Funcionalidades
-- **Desenho da Forca:** Contém um desenho de uma forca, onde será acrescentado partes de um personagem em Stick em cada vez que o jogador errar a letra.
-- **Palavra secreta aleatória:** Todo inicio de partida, o jogo irá escolher uma palavra aleatória.
-- **Visualização da palavra:** A palavra sorteada é escrita e deixada a mostra na tela conforme o jogador acerta as letras.
+- **Desenho da Forca:** Contém um desenho de uma forca, onde cada vez que o jogador errar a letra, será acrescentado parte de um personagem em Stick(palito).
+- **Palavra secreta aleatória:** Todo início de partida, o jogo irá sortear uma palavra aleatória.
+- **Visualização da palavra:** A palavra sorteada é formada e exibida na tela conforme o jogador acerta as letras.
 - **Contagem de erros:** É mostrado ao jogador quantas vezes ele errou até o momento.
 
 ## Requisitos
