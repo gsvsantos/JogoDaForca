@@ -1,6 +1,5 @@
 ﻿using JogoDaForca.ConsoleApp.Entities;
 using JogoDaForca.ConsoleApp.Entities.Utils;
-using System.Threading.Channels;
 
 namespace JogoDaForca.ConsoleApp
 {
