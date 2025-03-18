@@ -1,17 +1,20 @@
 # Jogo da Forca
-![](https://i.imgur.com/kyySj8G.gif)
+![](https://i.imgur.com/ClOi9lt.gif)
 
 ## Projeto
-Um jogo da forca sobre frutas.
+Um simples jogo da forca.
 
 ## Como Jogar
+- Navegue pelos menus Inicial e Principal.
+- Inicie uma partida ou antes selecione um tema nas Configurações.
 - Será escolhido aleatoriamente uma palavra entre várias.
 - Você deverá chutar uma letra por vez.
 - Continue até acertar a palavra sorteada, ou esgotarem suas tentativas.
 
 ## Funcionalidades
 - **Desenho da Forca:** Contém um desenho de uma forca, onde cada vez que o jogador errar a letra, será acrescentado parte de um personagem em Stick(palito).
-- **Palavra secreta aleatória:** Todo início de partida, o jogo irá sortear uma palavra aleatória.
+- **Tema secreto aleatória:** Caso não seja selecionado um tema nas configurações, o jogo selecionará um tema aleatório.
+- **Palavra secreta aleatória:** Todo início de partida, o jogo irá sortear uma palavra aleatória de acordo com o tema atual.
 - **Visualização da palavra:** A palavra sorteada é formada e exibida na tela conforme o jogador acerta as letras.
 - **Contagem de erros:** É mostrado ao jogador quantas vezes ele errou até o momento.
 
