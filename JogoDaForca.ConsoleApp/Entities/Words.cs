@@ -49,23 +49,21 @@
                 "LAGARTO",
                 "PASSARO",
                 "CANGURU",
-                "URSOS",
+                "URSO",
                 "JACARE",
                 "GIRAFA",
                 "HIPOPOTAMO",
-                "REINDEER",
                 "BUFALO",
                 "CROCODILO",
                 "LULA",
                 "TARTARUGA",
                 "PEIXE",
                 "PIRANHA",
-                "AQUARIO",
                 "GOLFINHO",
-                "BALLENA",
+                "BALEIA",
                 "PINGUIM",
                 "CORVO",
-                "EAGLE",
+                "GAIVOTA",
                 "GAVIAO",
                 "AGUIA"
             ];
@@ -74,31 +72,26 @@
             [
                 "CADEIRA",
                 "MESA",
-                "LAMPADE",
+                "LAMPADA",
                 "SOFA",
                 "TV",
                 "CELULAR",
                 "TELEVISAO",
                 "COMPUTADOR",
-                "MICRO-ONDAS",
                 "FORNO",
                 "LIVRO",
                 "CANETA",
                 "LAPIS",
                 "FONE",
                 "RELOGIO",
-                "MAQUIAGEM",
                 "ESPONJA",
                 "TALHER",
                 "COLHER",
                 "FACAS",
                 "TIGELA",
-                "TACA",
                 "PRATO",
                 "CUPOM",
                 "ALMOFADA",
-                "PENDENTE",
-                "LIVRARIA",
                 "CARTAZ",
                 "MAPA"
             ];
@@ -114,52 +107,51 @@
                 "BRANCO",
                 "PRETO",
                 "CINZA",
-                "MARRON",
+                "MARROM",
                 "BEGE",
                 "DOURADO",
                 "PRATEADO",
-                "AZUL_CLARO",
-                "VERDE_CLARO",
                 "LILAS",
-                "PINK",
+                "ROSA",
                 "MAGENTA",
                 "TURQUESA",
                 "INDIGO",
-                "CARAMELHO",
+                "CARAMELO",
                 "LIMAO",
-                "PELE",
-                "FUCIA",
                 "CASTANHO",
                 "VIOLETA",
-                "MARROM_ESCURO",
-                "BRANCO_QUENTE",
-                "PRETO_ESCURO",
-                "AMARELO_CLARO"
             ];
         public static string WordRandomizer(string option)
         {
-            Random random = new Random();
             string randomWord = "";
 
             if (option == "1")
             {
-                int chosenIndice = random.Next(Fruits.Length);
+                int chosenIndice = HangMan.randomizer.Next(Fruits.Length);
                 randomWord = Fruits[chosenIndice];
+                HangMan.wordType = "Frutas";
+                HangMan.typeID = 1;
             }
             if (option == "2")
             {
-                int chosenIndice = random.Next(Fruits.Length);
+                int chosenIndice = HangMan.randomizer.Next(Animals.Length);
                 randomWord = Animals[chosenIndice];
+                HangMan.wordType = "Animais";
+                HangMan.typeID = 2;
             }
             if (option == "3")
             {
-                int chosenIndice = random.Next(Fruits.Length);
+                int chosenIndice = HangMan.randomizer.Next(Objects.Length);
                 randomWord = Objects[chosenIndice];
+                HangMan.wordType = "Objetos";
+                HangMan.typeID = 3;
             }
             if (option == "4")
             {
-                int chosenIndice = random.Next(Fruits.Length);
+                int chosenIndice = HangMan.randomizer.Next(Colors.Length);
                 randomWord = Colors[chosenIndice];
+                HangMan.wordType = "Cores";
+                HangMan.typeID = 4;
             }
 
             return randomWord;
