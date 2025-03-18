@@ -61,28 +61,8 @@ namespace JogoDaForca.ConsoleApp.Entities
 
                 do
                 {
-                    string head = errorsQuantity >= 1 ? " O " : " ";
-                    string body = errorsQuantity >= 2 ? "|" : " ";
-                    string leftArm = errorsQuantity >= 3 ? "/" : " ";
-                    string rightArm = errorsQuantity >= 4 ? @"\" : " ";
-                    string leftLeg = errorsQuantity >= 5 ? "/ " : " ";
-                    string rightLeg = errorsQuantity >= 6 ? "\\" : " ";
+                    HangManDraw(ref errorsQuantity, ref findLetters);
 
-                    Console.Clear();
-                    Console.WriteLine("-------------------------------------");
-                    Console.WriteLine("Jogo da Forca");
-                    Console.WriteLine(" ___________         ");
-                    Console.WriteLine(" |/        |         ");
-                    Console.WriteLine(" |        {0}        ", head);
-                    Console.WriteLine(" |        {0}{1}{2}  ", leftArm, body, rightArm);
-                    Console.WriteLine(" |         {0}       ", body);
-                    Console.WriteLine(" |        {0}{1}     ", leftLeg, rightLeg);
-                    Console.WriteLine(" |                   ");
-                    Console.WriteLine(" |                   ");
-                    Console.WriteLine("_|____               ");
-                    Console.WriteLine("-------------------------------------");
-                    Console.WriteLine($"Palavra escolhida: {String.Join("", findLetters)}");
-                    Console.WriteLine("-------------------------------------");
                     if (errorsQuantity <= 5)
                     {
                         Console.WriteLine($"Erros do Jogador: {errorsQuantity}");
@@ -93,7 +73,6 @@ namespace JogoDaForca.ConsoleApp.Entities
                         Console.WriteLine($"Você errou {errorsQuantity} vezes...");
                         Console.WriteLine("-------------------------------------");
                     }
-
                     if (playerLose)
                     {
                         Console.WriteLine($"A palavra era > {randomWord} <...");
@@ -101,7 +80,6 @@ namespace JogoDaForca.ConsoleApp.Entities
                         Console.WriteLine("-------------------------------------");
                         break;
                     }
-
                     if (playerWin)
                     {
                         Console.WriteLine($"Você acertou!! A palavra era > {randomWord} <, parabéns!");
@@ -112,7 +90,6 @@ namespace JogoDaForca.ConsoleApp.Entities
                     string letter = Auxiliary.LetterVerify("\nDigite uma letra: ");
                     char guess = letter[0];
                     bool letterWasFound = false;
-
                     for (int charCount = 0; charCount < randomWord.Length; charCount++)
                     {
 
@@ -150,8 +127,8 @@ namespace JogoDaForca.ConsoleApp.Entities
                 Console.WriteLine("=--=--=--=--=--=--=--=--=--=--=--=\n");
                 Console.WriteLine("1 >> Selecionar o Tipo de Palavras");
                 Console.WriteLine("S >> Voltar ao Menu Principal");
-                string option = Auxiliary.OptionVerify("\nOpção: ", ["1", "S"]);
 
+                string option = Auxiliary.OptionVerify("\nOpção: ", ["1", "S"]);
                 if (option == "1")
                 {
                     do
@@ -183,6 +160,31 @@ namespace JogoDaForca.ConsoleApp.Entities
                     break;
                 }
             } while (true);
+        }
+        public static void HangManDraw(ref int errorsQuantity, ref char[] findLetters)
+        {
+            string head = errorsQuantity >= 1 ? " O " : " ";
+            string body = errorsQuantity >= 2 ? "|" : " ";
+            string leftArm = errorsQuantity >= 3 ? "/" : " ";
+            string rightArm = errorsQuantity >= 4 ? @"\" : " ";
+            string leftLeg = errorsQuantity >= 5 ? "/ " : " ";
+            string rightLeg = errorsQuantity >= 6 ? "\\" : " ";
+
+            Console.Clear();
+            Console.WriteLine("-------------------------------------");
+            Console.WriteLine("Jogo da Forca");
+            Console.WriteLine(" ___________         ");
+            Console.WriteLine(" |/        |         ");
+            Console.WriteLine(" |        {0}        ", head);
+            Console.WriteLine(" |        {0}{1}{2}  ", leftArm, body, rightArm);
+            Console.WriteLine(" |         {0}       ", body);
+            Console.WriteLine(" |        {0}{1}     ", leftLeg, rightLeg);
+            Console.WriteLine(" |                   ");
+            Console.WriteLine(" |                   ");
+            Console.WriteLine("_|____               ");
+            Console.WriteLine("-------------------------------------");
+            Console.WriteLine($"Palavra escolhida: {String.Join("", findLetters)}");
+            Console.WriteLine("-------------------------------------");
         }
     }
 }
