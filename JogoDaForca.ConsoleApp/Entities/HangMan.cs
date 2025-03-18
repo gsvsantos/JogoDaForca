@@ -50,11 +50,7 @@ namespace JogoDaForca.ConsoleApp.Entities
                     randomWord = Words.WordRandomizer(typeID.ToString());
                 }
                 char[] findLetters = new char[randomWord.Length];
-                for (int actualChar = 0; actualChar < findLetters.Length; actualChar++)
-                {
-                    findLetters[actualChar] = '_';
-                }
-
+                FillEmptyChars(ref findLetters);
                 int errorsQuantity = 0;
                 bool playerWin = false;
                 bool playerLose = false;
@@ -160,6 +156,13 @@ namespace JogoDaForca.ConsoleApp.Entities
                     break;
                 }
             } while (true);
+        }
+        public static void FillEmptyChars(ref char[] findLetters)
+        {
+            for (int actualChar = 0; actualChar < findLetters.Length; actualChar++)
+            {
+                findLetters[actualChar] = '_';
+            }
         }
         public static void HangManDraw(ref int errorsQuantity, ref char[] findLetters)
         {
