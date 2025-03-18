@@ -23,8 +23,8 @@ Um jogo da forca sobre frutas.
 ```
 git clone https://github.com/gsvsantos/JogoDaForca.git
 ```
-2. Abra o terminal ou promp de comando e navegue até a pasta raiz do Jogo.
-3. Utilize o comando abaixo para restaurar as depencências do projeto.
+2. Abra o terminal ou prompt de comando e navegue até a pasta raiz do Jogo.
+3. Utilize o comando abaixo para restaurar as dependências do projeto.
 ```
 dotnet restore
 ```
