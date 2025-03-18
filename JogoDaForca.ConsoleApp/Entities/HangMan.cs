@@ -8,6 +8,7 @@ namespace JogoDaForca.ConsoleApp.Entities
         public static int chosenIndice;
         public static string wordType = "";
         public static int typeID = 0;
+        public static int errorsQuantity = 0;
         public static string randomWord = Words.WordRandomizer(randomizer.Next(1, 5).ToString());
 
         public static void MainMenu()
@@ -50,67 +51,19 @@ namespace JogoDaForca.ConsoleApp.Entities
                     randomWord = Words.WordRandomizer(typeID.ToString());
                 }
                 char[] findLetters = new char[randomWord.Length];
-                for (int actualChar = 0; actualChar < findLetters.Length; actualChar++)
-                {
-                    findLetters[actualChar] = '_';
-                }
-
-                int errorsQuantity = 0;
-                bool playerWin = false;
-                bool playerLose = false;
+                findLetters = FillEmptyChars(findLetters);
+                bool onGoing = true;
 
                 do
                 {
-                    HangManDraw(ref errorsQuantity, ref findLetters);
+                    HangManDraw(findLetters);
+                    onGoing = ShowResult(onGoing, findLetters);
+                    if (onGoing)
+                        LetterGuess(findLetters);
 
-                    if (errorsQuantity <= 5)
-                    {
-                        Console.WriteLine($"Erros do Jogador: {errorsQuantity}");
-                        Console.WriteLine("-------------------------------------");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Você errou {errorsQuantity} vezes...");
-                        Console.WriteLine("-------------------------------------");
-                    }
-                    if (playerLose)
-                    {
-                        Console.WriteLine($"A palavra era > {randomWord} <...");
-                        Console.WriteLine("Que pena, você enforcou o boneco =/");
-                        Console.WriteLine("-------------------------------------");
-                        break;
-                    }
-                    if (playerWin)
-                    {
-                        Console.WriteLine($"Você acertou!! A palavra era > {randomWord} <, parabéns!");
-                        Console.WriteLine("-------------------------------------");
-                        break;
-                    }
-
-                    string letter = Auxiliary.LetterVerify("\nDigite uma letra: ");
-                    char guess = letter[0];
-                    bool letterWasFound = false;
-                    for (int charCount = 0; charCount < randomWord.Length; charCount++)
-                    {
-
-                        if (guess == randomWord[charCount])
-                        {
-                            findLetters[charCount] = randomWord[charCount];
-                            letterWasFound = true;
-                        }
-                    }
-
-                    if (letterWasFound == false)
-                    {
-                        errorsQuantity++;
-                    }
-
-                    string wordFound = String.Join("", findLetters);
-
-                    playerWin = wordFound == randomWord;
-                    playerLose = errorsQuantity > 5;
-                } while (true);
+                } while (onGoing);
                 randomWord = "";
+                errorsQuantity = 0;
 
                 Console.Write("Pressione [Enter] para voltar ao menu.");
                 Console.ReadKey();
@@ -161,7 +114,15 @@ namespace JogoDaForca.ConsoleApp.Entities
                 }
             } while (true);
         }
-        public static void HangManDraw(ref int errorsQuantity, ref char[] findLetters)
+        public static char[] FillEmptyChars(char[] findLetters)
+        {
+            for (int actualChar = 0; actualChar < findLetters.Length; actualChar++)
+            {
+                findLetters[actualChar] = '_';
+            }
+            return findLetters;
+        }
+        public static void HangManDraw(char[] findLetters)
         {
             string head = errorsQuantity >= 1 ? " O " : " ";
             string body = errorsQuantity >= 2 ? "|" : " ";
@@ -183,8 +144,69 @@ namespace JogoDaForca.ConsoleApp.Entities
             Console.WriteLine(" |                   ");
             Console.WriteLine("_|____               ");
             Console.WriteLine("-------------------------------------");
-            Console.WriteLine($"Palavra escolhida: {String.Join("", findLetters)}");
+            Console.WriteLine($"Palavra sorteada: {String.Join("", findLetters)}");
             Console.WriteLine("-------------------------------------");
+
+
+        }
+        public static void LetterGuess(char[] findLetters)
+        {
+            string letter = Auxiliary.LetterVerify("\nDigite uma letra: ");
+            char guess = letter[0];
+            bool letterWasFound = false;
+            for (int charCount = 0; charCount < randomWord.Length; charCount++)
+            {
+
+                if (guess == randomWord[charCount])
+                {
+                    findLetters[charCount] = randomWord[charCount];
+                    letterWasFound = true;
+                }
+            }
+
+            if (letterWasFound == false)
+            {
+                errorsQuantity++;
+            }
+        }
+        public static bool ShowResult(bool onGoing, char[] findLetters)
+        {
+            bool playerLose = CheckLose(findLetters);
+            bool playerWin = CheckWin(findLetters);
+
+            if (errorsQuantity <= 5)
+            {
+                Console.WriteLine($"Erros do Jogador: {errorsQuantity}");
+                Console.WriteLine("-------------------------------------");
+            }
+            else
+            {
+                Console.WriteLine($"Você errou {errorsQuantity} vezes...");
+                Console.WriteLine("-------------------------------------");
+            }
+            if (playerLose == true)
+            {
+                Console.WriteLine($"A palavra era > {randomWord} <...");
+                Console.WriteLine("Que pena, você enforcou o boneco =/");
+                Console.WriteLine("-------------------------------------");
+                return false;
+            }
+            if (playerWin == true)
+            {
+                Console.WriteLine($"Você acertou!! A palavra era > {randomWord} <, parabéns!");
+                Console.WriteLine("-------------------------------------");
+                return false;
+            }
+            return true;
+        }
+        public static bool CheckWin(char[] findLetters)
+        {
+            string wordFound = String.Join("", findLetters);
+            return wordFound == randomWord;
+        }
+        public static bool CheckLose(char[] findLetters)
+        {
+            return errorsQuantity > 5;
         }
     }
 }
