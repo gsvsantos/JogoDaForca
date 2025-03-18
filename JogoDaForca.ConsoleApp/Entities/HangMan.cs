@@ -96,7 +96,7 @@ namespace JogoDaForca.ConsoleApp.Entities
 
                     if (playerLose)
                     {
-                        Console.WriteLine($"A palavra era {randomWord}...");
+                        Console.WriteLine($"A palavra era > {randomWord} <...");
                         Console.WriteLine("Que pena, você enforcou o boneco =/");
                         Console.WriteLine("-------------------------------------");
                         break;
@@ -104,7 +104,7 @@ namespace JogoDaForca.ConsoleApp.Entities
 
                     if (playerWin)
                     {
-                        Console.WriteLine($"Você acertou a palavra {randomWord}, parabéns!");
+                        Console.WriteLine($"Você acertou!! A palavra era > {randomWord} <, parabéns!");
                         Console.WriteLine("-------------------------------------");
                         break;
                     }
@@ -148,7 +148,7 @@ namespace JogoDaForca.ConsoleApp.Entities
                 Console.WriteLine("=--=--=--=--=--=--=--=--=--=--=--=");
                 Console.WriteLine("Configurações");
                 Console.WriteLine("=--=--=--=--=--=--=--=--=--=--=--=\n");
-                Console.WriteLine("1 >> Selecionar Tipo de Palavras");
+                Console.WriteLine("1 >> Selecionar o Tipo de Palavras");
                 Console.WriteLine("S >> Voltar ao Menu Principal");
                 string option = Auxiliary.OptionVerify("\nOpção: ", ["1", "S"]);
 
@@ -158,8 +158,8 @@ namespace JogoDaForca.ConsoleApp.Entities
                     {
                         Console.Clear();
                         Console.WriteLine("=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=");
-                        Console.WriteLine("Selecione qual o tipo de palavras que queira jogar");
-                        Console.WriteLine($"Atualmente é o tipo > {wordType} <");
+                        Console.WriteLine("Selecione com qual tipo de palavras você quer jogar");
+                        Console.WriteLine($"Atualmente o tipo é > {wordType} <");
                         Console.WriteLine("=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=\n");
                         Console.WriteLine("Digite 1 para Frutas");
                         Console.WriteLine("Digite 2 para Animais");
