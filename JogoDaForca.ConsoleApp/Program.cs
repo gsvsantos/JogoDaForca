@@ -1,4 +1,5 @@
 ﻿using JogoDaForca.ConsoleApp.Entities;
+using JogoDaForca.ConsoleApp.Entities.Utils;
 using System.Threading.Channels;
 
 namespace JogoDaForca.ConsoleApp
@@ -7,26 +8,30 @@ namespace JogoDaForca.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("=--=--=--=--=--=--=--=--=--=--=--=");
-            Console.WriteLine("Boas vindas ao Jogo da Forca D:");
-            Console.WriteLine("=--=--=--=--=--=--=--=--=--=--=--=\n");
-            Console.WriteLine("1 >> Iniciar o Jogo");
-            Console.WriteLine("S >> Fechar o Jogo");
-            string option = Console.ReadLine()!;
-            switch (option)
+            bool onMainMenu = true;
+            do
             {
-                case "1":
-                    Console.Clear();
-                    HangMan.MainMenu();
-                    break;
-                case "S":
-                    Console.Clear();
-                    Console.WriteLine("Adeus (T_T)/");
-                    break;
-                default:
-                    Console.WriteLine("Isso não é uma opção..");
-                    break;
-            }
+                Console.Clear();
+                Console.WriteLine("=--=--=--=--=--=--=--=--=--=--=--=");
+                Console.WriteLine("Boas vindas ao Jogo da Forca D:");
+                Console.WriteLine("=--=--=--=--=--=--=--=--=--=--=--=\n");
+                Console.WriteLine("1 >> Iniciar o Jogo");
+                Console.WriteLine("S >> Fechar o Jogo");
+                string option = Auxiliary.OptionVerify("\nOpção: ", ["1", "S"]);
+
+                switch (option)
+                {
+                    case "1":
+                        Console.Clear();
+                        HangMan.MainMenu();
+                        break;
+                    case "S":
+                        Console.Clear();
+                        Console.WriteLine("Adeus (T_T)/");
+                        onMainMenu = false;
+                        break;
+                }
+            } while (onMainMenu);
         }
     }
 }
