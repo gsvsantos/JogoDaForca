@@ -20,6 +20,9 @@ Um simples jogo da forca.
 
 ## Requisitos
 - .NET SDK (recomendado .NET 8.0 ou superior) para compilação e execução do projeto.
+  
+## Tecnologias
+[![Tecnologias](https://skillicons.dev/icons?i=git,github,visualstudio,cs,dotnet)](https://skillicons.dev)
 
 ## Como utilizar
 1. **Clone o Repositório**
